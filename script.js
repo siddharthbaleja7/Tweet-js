@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const tweetInput = document.getElementById("tweetInput");
     const postButton = document.getElementById("postButton");
-    const tweetDisplay = document.getElementById("tweetDisplay");
+    const tweetDisplay = document.getElementById("tweetDisplay"); 
     const deleteConfirmModal = document.querySelector(".delete-confirm");
 
     // Function to create a tweet card
