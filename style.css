@@ -20,9 +20,21 @@
 .col1{
     background-color: aqua;
 }
+.col2{
+    background-color: brown;
+}
 #tweetInput{
     height: 15rem;
     width: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    
 }
 
 /* Tweet card styles */
