@@ -1,7 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
     const tweetInput = document.getElementById("tweetInput");
     const postButton = document.getElementById("postButton");
-    const tweetDisplay = document.getElementById("tweetDisplay"); 
+    const tweetDisplay = document.getElementById("tweetDisplay");
     const deleteConfirmModal = document.querySelector(".delete-confirm");
 
     // Function to create a tweet card
@@ -17,14 +16,28 @@ document.addEventListener("DOMContentLoaded", function() {
     
             // Create and append like and comment icons
             const likeIcon = document.createElement("img");
-            likeIcon.src = "https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/029/original/heart.png?1706888679"; // Placeholder for like icon
+            likeIcon.src = "https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/029/original/heart.png?1706888679";
             likeIcon.alt = "like";
             tweetCard.appendChild(likeIcon);
+
+            likeIcon.addEventListener("click", function() {
+                if(likeIcon.src ="https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/029/original/heart.png?1706888679"){
+                    likeIcon.src = "https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/025/original/state_clicked.png?1706888455";
+                }
+            });
+
     
             const commentIcon = document.createElement("img");
             commentIcon.src = "https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/026/original/comment.png?1706888619"; // Placeholder for comment icon
             commentIcon.alt = "comment";
             tweetCard.appendChild(commentIcon);
+            
+            commentIcon.addEventListener("click", function() {
+                const commentText = prompt("Please enter your comment:");
+                if (commentText !== null && commentText.trim() !== "") {
+                    displayTweet(commentText); // Display the comment as a new tweet
+                }
+            });
     
             // Create and append delete button
             const deleteButton = document.createElement("button");
@@ -77,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Please enter some text before posting.");
         }
     });
-
-    
-});
+    window.addEventListener("load", function() {
+        const savedTweets = JSON.parse(localStorage.getItem("tweets")) || [];
+        savedTweets.forEach(tweet => displayTweet(tweet));
+    });
